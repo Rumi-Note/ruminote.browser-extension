@@ -6,6 +6,7 @@
   "description": "Ruminote 如觅书摘微信读书同步扩展",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "package": "node scripts/build.mjs && node scripts/package.mjs",
     "test": "node --test",
     "check": "node --check src/*.js && node --check scripts/*.mjs && npm test && npm run build"
   }
