@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Rumi书摘 · 微信读书同步",
+  "version": "0.1.0",
+  "description": "将你自己的微信读书书摘同步到 Rumi书摘。非微信读书官方工具。",
+  "permissions": ["storage", "tabs", "sidePanel"],
+  "host_permissions": [
+    "https://weread.qq.com/*",
+    "https://cloud1-d7g8j2h4675ed447b-1480876426.ap-shanghai.app.tcloudbase.com/*"
+  ],
+  "action": { "default_title": "打开 Rumi书摘" },
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://weread.qq.com/web/reader/*"],
+      "js": ["content-bundle.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": { "default_path": "sidepanel.html" }
+}

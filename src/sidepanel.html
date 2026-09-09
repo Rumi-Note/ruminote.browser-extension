@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruminote 如觅书摘</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="unsupportedPage" class="unsupported-page" hidden>
+    <div class="unsupported-brand">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span>Ruminote 如觅书摘</span>
+    </div>
+    <div class="unsupported-content">
+      <div class="unsupported-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16ZM20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5v-16Z"/></svg>
+      </div>
+      <h1 id="unsupportedTitle">当前页面不是微信读书</h1>
+      <p id="unsupportedMessage">请先打开微信读书中的一本书，再使用 Rumi书摘。</p>
+      <a class="weread-link" href="https://weread.qq.com/" target="_blank" rel="noreferrer">打开微信读书</a>
+    </div>
+  </section>
+
+  <main id="appShell" class="app-shell" hidden>
+    <header class="book-header">
+      <div class="top-row">
+        <div class="brand-row">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>Ruminote 如觅书摘</span>
+        </div>
+        <div class="header-actions">
+          <button id="refreshButton" class="icon-button" type="button" aria-label="重新读取书摘">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M5.6 9a7 7 0 0 1 11.8-2.4L20 9M4 15l2.6 2.4A7 7 0 0 0 18.4 15"/></svg>
+          </button>
+          <button id="accountButton" class="connection-button" type="button">未绑定</button>
+        </div>
+      </div>
+      <h1 id="bookTitle" class="book-title">正在读取当前书籍…</h1>
+      <p id="bookMeta" class="book-meta">请保持微信读书页面处于当前窗口</p>
+    </header>
+
+    <section id="statusPanel" class="status-panel" aria-live="polite">
+      <div class="spinner" aria-hidden="true"></div>
+      <strong id="statusTitle">正在读取书摘</strong>
+      <p id="statusMessage">首次读取可能需要展开微信读书的笔记列表。</p>
+    </section>
+
+    <section id="quoteList" class="quote-list" aria-label="当前书籍书摘" hidden></section>
+
+    <footer class="sync-bar">
+      <p id="syncHint" class="sync-hint">读取完成后即可同步</p>
+      <button id="syncButton" class="sync-button" type="button" disabled>同步书摘</button>
+    </footer>
+  </main>
+
+  <dialog id="pairDialog" class="pair-dialog">
+    <form method="dialog" class="pair-card" id="pairForm">
+      <div class="dialog-heading">
+        <div>
+          <span class="eyebrow">绑定 Rumi书摘</span>
+          <h2>输入六位配对码</h2>
+        </div>
+        <button id="closePairDialog" class="icon-button" type="button" aria-label="关闭">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p>在 Rumi书摘小程序中生成配对码，再输入到这里。配对码使用后会立即失效。</p>
+      <label for="pairCode">六位配对码</label>
+      <input id="pairCode" name="pairCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required>
+      <p id="pairError" class="form-error" role="alert"></p>
+      <button id="bindButton" class="sync-button" type="submit">绑定此浏览器</button>
+      <button id="unbindButton" class="text-button" type="button" hidden>清除本地绑定</button>
+    </form>
+  </dialog>
+
+  <template id="quoteTemplate">
+    <article class="quote-card">
+      <span class="quote-mark" aria-hidden="true">“</span>
+      <p class="quote-text"></p>
+      <div class="note" hidden><span class="note-label">我的想法</span><span class="note-text"></span></div>
+      <p class="chapter"></p>
+      <span class="sync-state" hidden>已同步</span>
+    </article>
+  </template>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

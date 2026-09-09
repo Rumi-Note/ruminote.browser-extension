@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruminote 微信读书侧栏方案</title>
+  <style>
+    :root {
+      --paper: #f6f1e7;
+      --paper-deep: #ebe3d4;
+      --card: #fffdf8;
+      --ink: #2b2b2b;
+      --muted: #7a6a55;
+      --green: #3f5c4e;
+      --green-soft: #e5ebe5;
+      --gold: #c9a15a;
+      --line: #ded5c5;
+      --shadow: 0 14px 40px rgba(54, 45, 32, .14);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #d9d4ca;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    }
+
+    .page-header {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 28px 28px 18px;
+    }
+    .page-header h1 { margin: 0 0 8px; font-size: 24px; }
+    .page-header p { margin: 0; color: #625d54; font-size: 14px; }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(360px, 1fr));
+      gap: 24px;
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 0 28px 40px;
+      overflow-x: auto;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .option-label strong { font-size: 16px; }
+    .option-label span { color: #625d54; font-size: 12px; }
+    .recommended {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 99px;
+      background: var(--green);
+      color: white !important;
+      letter-spacing: .05em;
+    }
+
+    .panel {
+      position: relative;
+      width: 100%;
+      min-width: 360px;
+      height: 760px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .panel-scroll {
+      height: 100%;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line) transparent;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .04em;
+    }
+    .brand-mark {
+      display: grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--green);
+      color: var(--paper);
+      font-family: Georgia, serif;
+      font-size: 17px;
+    }
+    .book-title {
+      margin: 14px 0 5px;
+      font-family: "Songti SC", STSong, serif;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+    .book-meta { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .count { color: var(--green); font-weight: 650; }
+
+    .quote-text {
+      margin: 0;
+      font-family: "Songti SC", STSong, Georgia, serif;
+      font-size: 16px;
+      line-height: 1.75;
+      text-align: justify;
+    }
+    .chapter { color: var(--muted); font-size: 11px; }
+    .note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-left: 2px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      background: var(--green-soft);
+      color: #435148;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .note-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .sync-button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 16px;
+      background: var(--green);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .sync-button:focus-visible { outline: 3px solid rgba(201, 161, 90, .55); outline-offset: 2px; }
+
+    /* A: 书页卡片 */
+    .option-a .panel-scroll { padding-bottom: 82px; }
+    .option-a header {
+      position: sticky;
+      z-index: 3;
+      top: 0;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246, 241, 231, .96);
+      backdrop-filter: blur(10px);
+    }
+    .option-a .quote-list { padding: 14px 14px 24px; }
+    .option-a .quote-card {
+      position: relative;
+      margin-bottom: 12px;
+      padding: 18px 16px 15px 22px;
+      border: 1px solid rgba(222, 213, 197, .8);
+      border-radius: 14px;
+      background: var(--card);
+      box-shadow: 0 4px 14px rgba(80, 62, 37, .05);
+    }
+    .option-a .quote-card::before {
+      content: "“";
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 26px;
+      line-height: 1;
+    }
+    .option-a .chapter { display: block; margin-top: 10px; }
+    .option-a .sync-bar {
+      position: absolute;
+      z-index: 4;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 12px 14px;
+      border-top: 1px solid var(--line);
+      background: rgba(246, 241, 231, .96);
+      backdrop-filter: blur(10px);
+    }
+
+    /* B: 章节折叠 */
+    .option-b .panel-scroll { padding-bottom: 24px; }
+    .option-b header { padding: 20px 18px 12px; }
+    .option-b .top-action { margin-top: 14px; }
+    .option-b .sync-button { padding: 11px 14px; border-radius: 9px; }
+    .chapter-group { border-top: 1px solid var(--line); }
+    .chapter-heading {
+      position: sticky;
+      z-index: 2;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 11px 18px;
+      background: var(--paper-deep);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .chapter-count { color: var(--muted); font-weight: 500; }
+    .option-b .quote-card { padding: 15px 18px; border-top: 1px solid rgba(222, 213, 197, .65); background: var(--card); }
+    .option-b .quote-card:first-child { border-top: 0; }
+    .option-b .quote-text { font-size: 15px; line-height: 1.65; }
+    .option-b .note { margin-top: 8px; padding: 8px 10px; }
+
+    /* C: 章节导轨 */
+    .option-c { display: grid; grid-template-columns: 72px 1fr; }
+    .option-c .rail {
+      padding: 18px 8px;
+      background: var(--green);
+      color: rgba(255,255,255,.72);
+      overflow-y: auto;
+    }
+    .rail-brand { color: #fff; font-family: Georgia, serif; font-size: 24px; text-align: center; }
+    .rail-item {
+      margin-top: 14px;
+      padding: 8px 4px;
+      border-radius: 8px;
+      font-size: 10px;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .rail-item.active { background: rgba(255,255,255,.14); color: #fff; }
+    .option-c .main { position: relative; min-width: 0; overflow: hidden; }
+    .option-c header { padding: 18px 18px 14px; border-bottom: 1px solid var(--line); }
+    .option-c .book-title { font-size: 18px; }
+    .option-c .panel-scroll { padding-bottom: 84px; }
+    .option-c .quote-list { padding: 8px 18px 20px; }
+    .option-c .quote-card { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .option-c .quote-card:last-child { border-bottom: 0; }
+    .option-c .chapter { display: block; margin-bottom: 8px; color: var(--gold); font-weight: 700; }
+    .option-c .quote-text { font-size: 17px; line-height: 1.8; }
+    .option-c .sync-bar {
+      position: absolute;
+      z-index: 4;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    @media (max-width: 1100px) {
+      .options { grid-template-columns: repeat(3, 390px); }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <h1>Ruminote 微信读书右侧栏 · 视觉方案</h1>
+    <p>三种方案均展示同一批 12 条书摘；想法统一作为书摘下方的“我的想法”，不展示线型或颜色。</p>
+  </header>
+
+  <main class="options">
+    <section>
+      <div class="option-label"><strong>方案 A · 书页卡片</strong><span class="recommended">推荐</span></div>
+      <div class="panel option-a">
+        <div class="panel-scroll">
+          <header data-book-header></header>
+          <div class="quote-list" data-flat-list></div>
+        </div>
+        <div class="sync-bar"><button class="sync-button">同步 12 条书摘</button></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="option-label"><strong>方案 B · 章节折叠</strong><span>信息密度高</span></div>
+      <div class="panel option-b">
+        <div class="panel-scroll">
+          <header><div data-book-header></div><div class="top-action"><button class="sync-button">同步当前书籍</button></div></header>
+          <div data-grouped-list></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="option-label"><strong>方案 C · 章节导轨</strong><span>长书导航强</span></div>
+      <div class="panel option-c">
+        <nav class="rail" aria-label="章节导航"><div class="rail-brand">R</div><div data-rail></div></nav>
+        <div class="main">
+          <div class="panel-scroll">
+            <header data-book-header></header>
+            <div class="quote-list" data-flat-list></div>
+          </div>
+          <div class="sync-bar"><button class="sync-button">同步 12 条书摘</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const book = {
+      title: '资治通鉴·横排版（胡三省注）294卷全',
+      author: '司馬光 胡三省 鄒寰宇'
+    };
+    const records = [
+      ['資治通鑑卷第一', '人主自臧，則衆謀不進。'],
+      ['資治通鑑卷第二', '夫民不可與慮始，而可與樂成。'],
+      ['資治通鑑卷第二', '論至德者不和於俗，成大功者不謀於衆。'],
+      ['資治通鑑卷第二', '善戰者因其勢而利導之'],
+      ['資治通鑑卷第三', '制國有常，利民爲本；從政有經，令行爲上。'],
+      ['資治通鑑卷第十', '權不可豫設，變不可先圖；與時遷移，應物變化，設策之機也。'],
+      ['資治通鑑卷第十', '意忌信讒'],
+      ['資治通鑑卷第十', '必內相誅'],
+      ['資治通鑑卷第十', '漢因舉兵而攻之'],
+      ['資治通鑑卷第十', '破楚必矣', '确实是'],
+      ['資治通鑑卷第十六', '河間王太傅衞綰擊吳、楚有功，拜爲中尉', '测试想法，这是一条笔记内容的点评'],
+      ['資治通鑑卷第十六', '河間王太傅衞綰擊吳、楚有功，拜爲中尉']
+    ].map(([chapter, text, note = '']) => ({ chapter, text, note }));
+
+    const header = `
+      <div class="brand-row"><span class="brand-mark">R</span><span>Ruminote 如觅书摘</span></div>
+      <h2 class="book-title">${book.title}</h2>
+      <div class="book-meta">${book.author}<br><span class="count">12 条书摘</span> · 当前书籍</div>`;
+
+    const card = record => `
+      <article class="quote-card">
+        <p class="quote-text">${record.text}</p>
+        ${record.note ? `<div class="note"><span class="note-label">我的想法</span>${record.note}</div>` : ''}
+        <span class="chapter">${record.chapter}</span>
+      </article>`;
+
+    document.querySelectorAll('[data-book-header]').forEach(node => { node.innerHTML = header; });
+    document.querySelectorAll('[data-flat-list]').forEach(node => { node.innerHTML = records.map(card).join(''); });
+
+    const groups = Map.groupBy ? Map.groupBy(records, record => record.chapter) : records.reduce((map, record) => {
+      if (!map.has(record.chapter)) map.set(record.chapter, []);
+      map.get(record.chapter).push(record);
+      return map;
+    }, new Map());
+
+    document.querySelector('[data-grouped-list]').innerHTML = [...groups].map(([chapter, items]) => `
+      <section class="chapter-group">
+        <div class="chapter-heading"><span>${chapter}</span><span class="chapter-count">${items.length} 条</span></div>
+        <div>${items.map(card).join('')}</div>
+      </section>`).join('');
+
+    document.querySelector('[data-rail]').innerHTML = [...groups.keys()].map((chapter, index) => `
+      <div class="rail-item ${index === 0 ? 'active' : ''}">${chapter.replace('資治通鑑', '')}</div>`).join('');
+  </script>
+</body>
+</html>

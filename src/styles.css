@@ -1,0 +1,96 @@
+:root {
+  color-scheme: light;
+  --paper: #f6f1e7;
+  --paper-deep: #ebe3d4;
+  --card: #fffdf8;
+  --ink: #2b2b2b;
+  --muted: #7a6a55;
+  --green: #3f5c4e;
+  --green-soft: #e5ebe5;
+  --gold: #c9a15a;
+  --line: #ded5c5;
+  --danger: #a3483e;
+  --shadow: 0 4px 14px rgba(80, 62, 37, .06);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { min-width: 320px; min-height: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+}
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+
+.app-shell { min-height: 100vh; padding-bottom: 88px; }
+.unsupported-page { display: flex; min-height: 100vh; padding: 20px; flex-direction: column; }
+.unsupported-brand { display: flex; align-items: center; gap: 8px; color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .035em; }
+.unsupported-content { display: flex; max-width: 300px; margin: auto; padding: 30px 12px 70px; align-items: center; flex-direction: column; text-align: center; }
+.unsupported-icon { display: grid; width: 58px; height: 58px; margin-bottom: 20px; place-items: center; border: 1px solid var(--line); border-radius: 18px; color: var(--green); background: var(--card); box-shadow: var(--shadow); }
+.unsupported-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
+.unsupported-content h1 { margin: 0; font-family: "Songti SC", STSong, serif; font-size: 20px; line-height: 1.4; }
+.unsupported-content p { margin: 10px 0 22px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.weread-link { min-width: 150px; padding: 11px 18px; border-radius: 11px; color: #fff; background: var(--green); font-size: 13px; font-weight: 700; text-decoration: none; }
+.weread-link:hover { filter: brightness(.95); }
+.book-header {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  padding: 18px 18px 15px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(246, 241, 231, .96);
+  backdrop-filter: blur(12px);
+}
+.top-row, .brand-row, .header-actions, .dialog-heading { display: flex; align-items: center; }
+.top-row, .dialog-heading { justify-content: space-between; gap: 12px; }
+.brand-row { gap: 8px; color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .035em; }
+.brand-mark { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 8px; background: var(--green); color: var(--paper); font: 17px Georgia, serif; }
+.header-actions { gap: 6px; }
+.icon-button { display: grid; width: 32px; height: 32px; place-items: center; padding: 0; border: 0; border-radius: 9px; color: var(--green); background: transparent; cursor: pointer; }
+.icon-button:hover { background: var(--paper-deep); }
+.icon-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.connection-button { padding: 6px 9px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); background: var(--card); font-size: 11px; cursor: pointer; }
+.connection-button.connected { border-color: rgba(63, 92, 78, .28); color: var(--green); background: var(--green-soft); }
+.book-title { margin: 13px 0 5px; font-family: "Songti SC", STSong, serif; font-size: 20px; line-height: 1.35; }
+.book-meta { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.book-meta strong { color: var(--green); font-weight: 700; }
+
+.status-panel { display: grid; min-height: 320px; padding: 52px 30px; place-items: center; align-content: center; text-align: center; }
+.status-panel strong { margin-top: 14px; font-size: 16px; }
+.status-panel p { max-width: 290px; margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+.status-panel.error strong { color: var(--danger); }
+.spinner { width: 26px; height: 26px; border: 2px solid var(--line); border-top-color: var(--green); border-radius: 50%; animation: spin .8s linear infinite; }
+.status-panel.error .spinner, .status-panel.ready .spinner { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.quote-list { padding: 14px 14px 24px; }
+.quote-card { position: relative; margin-bottom: 12px; padding: 18px 16px 15px 22px; border: 1px solid rgba(222, 213, 197, .85); border-radius: 14px; background: var(--card); box-shadow: var(--shadow); }
+.quote-mark { position: absolute; top: 6px; left: 8px; color: var(--gold); font: 26px/1 Georgia, serif; }
+.quote-text { margin: 0; font-family: "Songti SC", STSong, Georgia, serif; font-size: 16px; line-height: 1.75; text-align: justify; overflow-wrap: anywhere; }
+.chapter { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+.note { margin-top: 12px; padding: 10px 12px; border-left: 2px solid var(--gold); border-radius: 0 8px 8px 0; background: var(--green-soft); color: #435148; font-size: 13px; line-height: 1.55; }
+.note-label { display: block; margin-bottom: 3px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: .08em; }
+.sync-state { position: absolute; right: 13px; bottom: 12px; color: var(--green); font-size: 10px; }
+
+.sync-bar { position: fixed; z-index: 8; right: 0; bottom: 0; left: 0; padding: 9px 14px 12px; border-top: 1px solid var(--line); background: rgba(246, 241, 231, .97); backdrop-filter: blur(12px); }
+.sync-hint { min-height: 16px; margin: 0 0 5px; color: var(--muted); font-size: 10px; text-align: center; }
+.sync-button { width: 100%; min-height: 44px; padding: 11px 16px; border: 0; border-radius: 12px; background: var(--green); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; }
+.sync-button:disabled { cursor: not-allowed; opacity: .48; }
+.sync-button:not(:disabled):hover { filter: brightness(.95); }
+.sync-button:focus-visible, .icon-button:focus-visible, .connection-button:focus-visible, input:focus-visible { outline: 3px solid rgba(201, 161, 90, .55); outline-offset: 2px; }
+
+.pair-dialog { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(43, 43, 43, .34); }
+.pair-dialog::backdrop { background: rgba(43, 43, 43, .34); }
+.pair-card { position: absolute; right: 12px; bottom: 14px; left: 12px; padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: 0 18px 60px rgba(45, 37, 27, .24); }
+.eyebrow { color: var(--gold); font-size: 10px; font-weight: 750; letter-spacing: .1em; }
+.pair-card h2 { margin: 4px 0 0; font-family: "Songti SC", STSong, serif; font-size: 20px; }
+.pair-card > p { margin: 13px 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.pair-card label { display: block; margin-bottom: 7px; color: var(--green); font-size: 12px; font-weight: 700; }
+.pair-card input { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--paper); font-size: 22px; letter-spacing: .32em; text-align: center; }
+.form-error { min-height: 18px; color: var(--danger) !important; }
+.text-button { width: 100%; margin-top: 12px; padding: 7px; border: 0; color: var(--danger); background: transparent; font-size: 12px; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
