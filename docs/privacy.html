@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#3f5c4e">
+  <title>Rumi书摘 · 微信读书同步｜隐私政策</title>
+  <style>
+    :root {
+      --paper: #f6f1e7;
+      --surface: #fffdf8;
+      --ink: #2b2b2b;
+      --muted: #7a6a55;
+      --green: #3f5c4e;
+      --gold: #c9a15a;
+      --line: #ded6c8;
+      --shadow: 0 18px 50px rgba(63, 92, 78, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.8;
+    }
+    a { color: var(--green); text-underline-offset: 3px; }
+    .topbar {
+      height: 7px;
+      background: linear-gradient(90deg, var(--green) 0 78%, var(--gold) 78% 100%);
+    }
+    main {
+      width: min(900px, calc(100% - 32px));
+      margin: 44px auto 72px;
+    }
+    header {
+      padding: 42px 48px 34px;
+      background: var(--green);
+      color: var(--surface);
+      border-radius: 22px 22px 0 0;
+      box-shadow: var(--shadow);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 13px;
+      font: 700 28px/1 Georgia, serif;
+    }
+    .brand-name { font-weight: 650; letter-spacing: 0.02em; }
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Songti SC", "STSong", serif;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.25;
+      font-weight: 600;
+    }
+    .subtitle {
+      margin: 14px 0 0;
+      color: rgba(255, 253, 248, 0.76);
+      font-size: 15px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      padding: 18px 48px;
+      background: #ebe5d9;
+      border-bottom: 1px solid var(--line);
+    }
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    article {
+      padding: 38px 48px 50px;
+      background: var(--surface);
+      border-radius: 0 0 22px 22px;
+      box-shadow: var(--shadow);
+    }
+    .notice {
+      margin: 0 0 32px;
+      padding: 17px 20px;
+      background: #eef1ec;
+      border-left: 4px solid var(--green);
+      border-radius: 0 12px 12px 0;
+    }
+    h2 {
+      margin: 38px 0 12px;
+      color: var(--green);
+      font-family: Georgia, "Songti SC", "STSong", serif;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    h3 { margin: 25px 0 8px; font-size: 18px; }
+    p { margin: 10px 0; }
+    ul { margin: 8px 0 12px; padding-left: 1.4em; }
+    li { margin: 7px 0; }
+    strong { color: #253f34; }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef1ec; color: var(--green); }
+    .english {
+      margin-top: 58px;
+      padding-top: 42px;
+      border-top: 2px solid var(--gold);
+    }
+    .meta, footer { color: var(--muted); font-size: 14px; }
+    footer { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--line); }
+    @media (max-width: 640px) {
+      main { width: min(100% - 20px, 900px); margin-top: 20px; }
+      header, article { padding-left: 24px; padding-right: 24px; }
+      nav { padding-left: 24px; padding-right: 24px; }
+      header { border-radius: 16px 16px 0 0; }
+      article { border-radius: 0 0 16px 16px; }
+    }
+    @media print {
+      body { background: #fff; }
+      main { width: 100%; margin: 0; }
+      header, article { box-shadow: none; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar" aria-hidden="true"></div>
+  <main>
+    <header>
+      <div class="brand"><span class="mark" aria-hidden="true">R</span><span class="brand-name">Ruminote 如觅书摘</span></div>
+      <h1>浏览器扩展隐私政策</h1>
+      <p class="subtitle">适用于“Rumi书摘 · 微信读书同步”浏览器扩展</p>
+    </header>
+    <nav aria-label="页面导航">
+      <a href="https://chromewebstore.google.com/detail/diefccjlcoanbfkdjkhadcmmakolmpcm" target="_blank" rel="noopener noreferrer">安装 Chrome 扩展 ↗</a>
+      <a href="#zh">中文</a>
+      <a href="#data">处理的数据</a>
+      <a href="#permissions">权限说明</a>
+      <a href="#rights">用户权利</a>
+      <a href="#en">English</a>
+    </nav>
+    <article>
+      <section id="zh">
+        <p class="meta">生效日期：2026-09-28　更新日期：2026-09-28</p>
+        <p>“Rumi书摘 · 微信读书同步”（以下简称“本扩展”）由<strong>北京泽稳咨询顾问有限公司</strong>（以下简称“我们”）开发和运营。本政策说明本扩展如何处理、传输、存储和保护你的信息。</p>
+        <p class="notice"><strong>重要说明：</strong>本扩展不是微信读书官方工具。它只在你主动打开扩展侧栏或点击刷新时，读取当前微信读书阅读页面中属于你的“我的笔记”；只有在你主动点击同步后，所选书摘才会传输到 Rumi书摘。我们不读取、保存或上传微信读书 Cookie、登录凭据，也不解析或上传书籍正文。</p>
+
+        <h2 id="data">一、我们处理哪些数据</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>数据</th><th>用途</th><th>存储位置</th></tr></thead>
+            <tbody>
+              <tr><td>书名、作者、章节、你的书摘正文和“我的想法”</td><td>在侧栏中展示，并在你点击同步后保存到你的 Rumi书摘账号</td><td>展示时在浏览器内处理；同步后存储于腾讯云 CloudBase</td></tr>
+              <tr><td>六位配对码</td><td>将本扩展与正确的 Rumi书摘账号绑定</td><td>仅用于完成一次配对，不作为微信读书凭据保存</td></tr>
+              <tr><td>Rumi书摘设备令牌、设备 ID、设备名称和平台类型</td><td>识别已绑定浏览器并授权同步请求</td><td>浏览器扩展本地存储；必要信息同步至 Rumi书摘服务端</td></tr>
+              <tr><td>已同步书摘的不可逆指纹</td><td>判断哪些书摘已同步，避免重复上传</td><td>浏览器扩展本地存储</td></tr>
+              <tr><td>必要的错误信息</td><td>在界面中提示失败原因、保障同步稳定</td><td>通常仅在当前会话中处理；服务端可能保留必要的运行日志</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>本扩展<strong>不会</strong>读取、保存或上传你的微信读书 Cookie、账号密码、支付信息、浏览历史、通讯录、位置、麦克风或摄像头数据，也不会采集书籍正文。</p>
+
+        <h2>二、何时读取和上传</h2>
+        <ul>
+          <li><strong>页面读取：</strong>仅当你在微信读书阅读页主动打开扩展侧栏或点击刷新时进行。</li>
+          <li><strong>数据上传：</strong>仅当你主动点击“同步”并完成账号绑定后进行；本扩展不会在后台自动上传。</li>
+          <li><strong>读取范围：</strong>内容脚本只在 <code>https://weread.qq.com/web/reader/*</code> 页面运行，并只解析“我的笔记”相关页面节点。</li>
+        </ul>
+
+        <h2 id="permissions">三、浏览器权限说明</h2>
+        <ul>
+          <li><strong>storage：</strong>在本地保存设备标识、Rumi书摘设备令牌和已同步书摘指纹，使绑定状态和增量同步在浏览器重启后仍可使用。</li>
+          <li><strong>tabs：</strong>识别当前标签页是否为受支持的微信读书阅读页，并将读取请求发送到该标签页。</li>
+          <li><strong>sidePanel：</strong>在浏览器侧栏中展示当前书籍的书摘、绑定状态和同步结果。</li>
+          <li><strong>https://weread.qq.com/*：</strong>支持识别微信读书标签页；实际书摘解析脚本仅注入 <code>/web/reader/*</code> 阅读页。</li>
+          <li><strong>Rumi书摘 CloudBase API 域名：</strong>仅用于设备绑定和你主动发起的书摘同步。</li>
+        </ul>
+        <p>本扩展不包含远程代码执行，不会从服务器下载并执行脚本，也不会将权限用于广告、画像、信用评估或与核心功能无关的用途。</p>
+
+        <h2>四、数据如何使用和共享</h2>
+        <p>我们仅为提供设备绑定、书摘展示、增量同步、去重和故障排查使用上述数据。我们<strong>不会出售你的数据，不会将数据用于广告，不会进行跨站追踪，也不会将数据用于与本扩展单一用途无关的分析</strong>。</p>
+        <p>为提供云端同步，我们使用腾讯云 CloudBase（中国境内）处理和存储同步数据。除提供服务所必需、依法配合监管或经你另行明确同意外，我们不会向其他第三方提供你的数据。</p>
+
+        <h2>五、存储期限与安全</h2>
+        <ul>
+          <li>本地设备令牌、设备 ID 和同步指纹会保留至你解绑、清除扩展数据或卸载扩展。</li>
+          <li>已同步书摘会保留至你在 Rumi书摘中删除相应内容或注销账号。</li>
+          <li>网络传输使用 HTTPS；服务端按设备令牌识别绑定关系，并按用户隔离数据。</li>
+        </ul>
+        <p>请理解，任何互联网传输或电子存储方式都无法保证绝对安全，但我们会采取与风险相称的技术与管理措施保护数据。</p>
+
+        <h2 id="rights">六、你的选择与权利</h2>
+        <ul>
+          <li>你可以不点击同步，仅在本地查看扩展读取到的书摘。</li>
+          <li>你可以在扩展中解除绑定，或在浏览器扩展管理页清除本地存储、停用或卸载本扩展。</li>
+          <li>你可以在 Rumi书摘小程序中查阅、编辑、导出和删除自己的书摘。</li>
+          <li>你可以在 Rumi书摘小程序“我的 → 注销账号”中永久删除账号及其云端数据。</li>
+        </ul>
+
+        <h2>七、未成年人</h2>
+        <p>本扩展主要面向成年用户，不面向不满 14 周岁的儿童提供服务。未成年人应在监护人指导下使用；不满 14 周岁的儿童应取得监护人明确同意后再使用本扩展或提供信息。</p>
+
+        <h2>八、政策更新</h2>
+        <p>当本扩展的数据处理方式发生实质变化时，我们会更新本政策并调整顶部的更新日期。必要时，我们会通过产品界面或商店更新说明提供提示。</p>
+
+        <h2>九、联系我们</h2>
+        <p>如对本政策或你的数据有疑问、意见或删除请求，请发送邮件至 <a href="mailto:zewenchuangxin@163.com">zewenchuangxin@163.com</a>，或通过 Rumi书摘小程序中的“我的 → 意见反馈”联系我们。</p>
+      </section>
+
+      <section id="en" class="english" lang="en">
+        <h1>Privacy Policy for the Browser Extension</h1>
+        <p class="meta">Effective: September 28, 2026　Last updated: September 28, 2026</p>
+        <p><strong>Rumi Highlights · WeRead Sync</strong> (the “Extension”) is developed and operated by <strong>Beijing Zewen Consulting Co., Ltd.</strong> (“we,” “us,” or “our”). This policy explains how the Extension handles, transfers, stores, and protects information.</p>
+        <p class="notice"><strong>Important:</strong> The Extension is not an official WeRead product. It reads only your own notes shown on the current WeRead reader page, and only when you open the side panel or request a refresh. Data is sent to Ruminote only after you explicitly click Sync. We do not read, store, or upload WeRead cookies, login credentials, or book text.</p>
+
+        <h2>1. Information handled</h2>
+        <ul>
+          <li><strong>Content you choose to sync:</strong> book title, author, chapter, your highlighted text, and your own comments.</li>
+          <li><strong>Pairing and device data:</strong> a one-time pairing code, Ruminote device token, device ID, device name, platform type, and binding time.</li>
+          <li><strong>Local synchronization state:</strong> irreversible fingerprints of items already synchronized, used to prevent duplicate uploads.</li>
+          <li><strong>Necessary error information:</strong> used to explain failures and maintain service reliability.</li>
+        </ul>
+        <p>We do not collect WeRead cookies, passwords, payment information, general browsing history, contacts, location, microphone or camera data, or book text.</p>
+
+        <h2>2. When processing occurs</h2>
+        <ul>
+          <li>Page content is read only when you open the Extension side panel or click Refresh on a supported WeRead reader page.</li>
+          <li>Content is uploaded only when you explicitly click Sync after pairing the Extension with your Ruminote account.</li>
+          <li>The content script runs only on <code>https://weread.qq.com/web/reader/*</code> and parses only the page elements representing your own notes.</li>
+          <li>The Extension does not upload data automatically in the background.</li>
+        </ul>
+
+        <h2>3. Permission purposes</h2>
+        <ul>
+          <li><strong>storage:</strong> retains the device identity, Ruminote device token, and synchronized-item fingerprints locally.</li>
+          <li><strong>tabs:</strong> identifies whether the active tab is a supported WeRead reader page and sends a parsing request to that tab.</li>
+          <li><strong>sidePanel:</strong> displays notes, pairing status, and synchronization results in the browser side panel.</li>
+          <li><strong>weread.qq.com host access:</strong> identifies WeRead tabs; content extraction is limited to <code>/web/reader/*</code>.</li>
+          <li><strong>Ruminote CloudBase API host access:</strong> performs device pairing and user-initiated synchronization.</li>
+        </ul>
+
+        <h2>4. Use, sharing, and sale of data</h2>
+        <p>We use data solely to provide pairing, note display, incremental synchronization, deduplication, and troubleshooting. <strong>We do not sell data, use it for advertising, perform cross-site tracking, or use it for purposes unrelated to the Extension’s single purpose.</strong></p>
+        <p>We use Tencent Cloud CloudBase, hosted in mainland China, to process and store synchronized content. We do not disclose data to other third parties except as necessary to provide the service, comply with law, or with your separate explicit consent.</p>
+
+        <h2>5. Retention and security</h2>
+        <p>Local device data remains until you unbind, clear extension storage, or uninstall the Extension. Synchronized content remains until you delete it or close your Ruminote account. Transfers use HTTPS, and server-side data is isolated by user and authenticated device token.</p>
+
+        <h2>6. Your choices and rights</h2>
+        <p>You may use the Extension for local viewing without syncing, unbind it, clear its local storage, disable or uninstall it, and view, export, edit, or delete synchronized content in Ruminote. You may permanently delete your account and cloud data from “Me → Delete account” in the Ruminote Mini Program.</p>
+
+        <h2>7. Children</h2>
+        <p>The Extension is intended primarily for adults and is not directed to children under 14. Minors should use it under guardian supervision, and children under 14 should obtain explicit guardian consent before using it or providing information.</p>
+
+        <h2>8. Changes and contact</h2>
+        <p>We may update this policy when our processing practices change. The date above will be revised, and material changes may also be announced in the product or release notes.</p>
+        <p>Questions or data requests: <a href="mailto:zewenchuangxin@163.com">zewenchuangxin@163.com</a>.</p>
+      </section>
+
+      <footer>
+        <strong>北京泽稳咨询顾问有限公司</strong><br>
+        Beijing Zewen Consulting Co., Ltd.<br>
+        Ruminote 如觅书摘
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
