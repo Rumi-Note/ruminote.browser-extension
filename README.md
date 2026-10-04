@@ -6,17 +6,23 @@
 
 ## 安装
 
+### Chrome（推荐）
+
+从 [Chrome Web Store 安装 Rumi书摘](https://chromewebstore.google.com/detail/diefccjlcoanbfkdjkhadcmmakolmpcm)，点击“添加至 Chrome”即可。商店安装版本可随 Chrome 自动更新，无需开启开发者模式。
+
+### Edge / Firefox / 离线安装
+
 从 [`releases/`](releases/) 目录下载对应浏览器的安装包，解压后按下面步骤加载。无需自己构建。
 
-### Chrome / Edge
+#### Edge
 
 1. 下载并解压 `ruminote-weread-chrome-v0.1.0.zip`。
-2. 在地址栏打开 `chrome://extensions`（Edge 为 `edge://extensions`）。
-3. 打开右上角的“开发者模式”。
-4. 点击“加载已解压的扩展程序”，选择解压出的文件夹。
+2. 在地址栏打开 `edge://extensions`。
+3. 打开“开发人员模式”。
+4. 点击“加载解压缩的扩展”，选择解压出的文件夹。
 5. 建议把 Rumi书摘固定到工具栏。
 
-### Firefox
+#### Firefox
 
 1. 下载并解压 `ruminote-weread-firefox-v0.1.0.zip`。
 2. 在地址栏打开 `about:debugging#/runtime/this-firefox`。
